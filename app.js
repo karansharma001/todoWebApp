@@ -1,8 +1,6 @@
 const express = require("express");
 const bodyParser = require("body-parser");
-const dotenv = require("dotenv");
 const mongoose = require("mongoose");
-dotenv.config({ path: "./config.env" });
 mongoose.set("strictQuery", true);
 const app = express();
 
@@ -11,7 +9,7 @@ app.set("view engine", "ejs");
 
 // Database setup
 
-mongoose.connect(process.env.DB);
+mongoose.connect("mongodb+srv://user:user@cluster0.vcdi38f.mongodb.net/tododWebAppDB");
 
 const tasksSchema = new mongoose.Schema({
   content: String,
