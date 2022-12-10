@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>todo-v2</title>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap');
+
+        * {
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+            font-family: 'Source Sans Pro', sans-serif;
+        }
+
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        :root {
+            --primary: #FF4858;
+            --secondary: #72F2EB;
+        }
+
+        .main-cont {
+            /* border: 1px solid black; */
+            display: flex;
+            align-items: center;
+            /* justify-content: center; */
+            flex-direction: column;
+            padding: 20px;
+            height: 70%;
+            width: 70%;
+            box-shadow: 0px 0px 20px 15px #ff485826;
+            border-radius: 5px;
+        }
+
+        .heading {
+            /* border: 1px solid black; */
+            padding: 10px 15px;
+            width: 100%;
+            text-align: center;
+            background-color: #FF4858;
+            color: white;
+            border: 5px solid #72F2EB;
+            border-radius: 5px;
+
+        }
+
+        .task-list-cont {
+            /* border: 1px solid black; */
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: baseline;
+            flex-direction: column;
+            overflow: scroll;
+
+
+        }
+
+        .task-list-cont::-webkit-scrollbar {
+            display: none;
+
+
+        }
+
+        .tasks {
+            /* border: 1px solid black; */
+            width: 90%;
+            text-align: center;
+            background-color: #FF4858;
+            color: white;
+            margin: 5px 0px;
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        form {
+            margin: 25px 0px;
+        }
+
+        form input {
+            padding: 5px 15px;
+        }
+
+        .btn {
+            padding: 7px 20px;
+            background-color: #72F2EB;
+            color: black;
+            /* font-weight: bold; */
+            border: none;
+            margin: 0px 5px;
+            border-radius: 5px;
+            text-decoration: none;
+
+        }
+
+        @media(max-width: 480px) {
+            .main-cont {
+                height: 90%;
+                width: 90%;
+            }
+
+            form input {
+                padding: 5px 5px;
+            }
+
+            .tasks {
+                width: 100%;
+                padding: 10px 10px;
+            }
+
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="main-cont">
+        <div class="heading">
+            <h2>Todo Web App</h2>
+        </div>
+
+        <form action="/addTask" method="post">
+            <input type="text" name="newTask" placeholder="Add new task...">
+            <button class="btn">Add task</button>
+        </form>
+
+        <div class="task-list-cont">
+
+
+            <% for(let i=0; i < tasks.length; i++) { %>
+                <div class="tasks">
+                    <p>
+                        <%= tasks[i].content %>
+                    </p>
+                    <a href="/deleteTask/<%= tasks[i]._id  %>" class="btn">Delete</a>
+                </div>
+                <%}%>
+
+
+
+
+
+        </div>
+
+
+    </div>
+
+</body>
+
+</html>
